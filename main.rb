@@ -5,33 +5,46 @@ require './turn.rb'
 
 def math_game
 
-  player1 = Player.new("Player 1", 3)
-  player2 = Player.new("Player 2", 3)
-
-  # puts "Player 1 is #{player1.number}"
+  players = Player.new("Player 1", "Player 2")
 
 
-  while (player1.lives != 0 || player2.lives != 0)
+  while (players.player1Life != 0 || players.player2Life != 0)
 
-    player1.show_player
+    players.show_player1
 
     question = Question.new
 
     question.ask_question
 
+    print ">"
+
     answer = $stdin.gets.chomp.to_i
 
-    question.validate_answer(answer)
+    if (question.validate_answer(answer) == false)
+      players.player1_reduce_life
+    end
 
-    player2.show_player
+    players.show_life
+
+    puts "------NEW TURN------"
+
+    players.show_player2
 
     question = Question.new
 
     question.ask_question
 
+    print ">"
+
     answer = $stdin.gets.chomp.to_i
 
-    question.validate_answer(answer)
+    if (question.validate_answer(answer) == false)
+      players.player2_reduce_life
+    end
+
+    players.show_life
+
+    puts "------NEW TURN------"
 
   end
 

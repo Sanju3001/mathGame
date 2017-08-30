@@ -20,8 +20,10 @@ class Question
 
     if (answer) == (random1 + random2)
       puts "YES! You are correct."
+      return true
     else
       puts "Seriously? No!"
+      return false
     end
 
   end
