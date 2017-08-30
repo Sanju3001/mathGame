@@ -1,14 +1,14 @@
 
 require './player.rb'
 require './question.rb'
-require './turn.rb'
 
 def math_game
 
   players = Player.new("Player 1", "Player 2")
 
 
-  while (players.player1Life != 0 || players.player2Life != 0)
+
+  while (players.player1Life > 0 || players.player2Life > 0)
 
     players.show_player1
 
@@ -26,7 +26,14 @@ def math_game
 
     players.show_life
 
-    puts "------NEW TURN------"
+    if (players.player1Life == 0)
+      puts "player 2 wins with a score of #{players.player2Life}/3"
+      puts "------- GAME OVER --------"
+      puts "Good bye!"
+      exit(0)
+    else
+      puts "------NEW TURN------"
+    end
 
     players.show_player2
 
@@ -44,9 +51,17 @@ def math_game
 
     players.show_life
 
-    puts "------NEW TURN------"
+    if (players.player2Life == 0)
+      puts "player 1 wins with a score of #{players.player1Life}/3"
+      puts "------- GAME OVER --------"
+      puts "Good bye!"
+      exit(0)
+    else
+      puts "------NEW TURN------"
+    end
 
   end
+
 
 end
 

@@ -19,7 +19,7 @@ class Player
   end
 
   def show_life
-    puts "P1: #{player1Life} vs P2: #{player2Life}"
+    puts "P1: #{player1Life}/3 vs P2: #{player2Life}/3"
   end
 
   def player1_reduce_life
